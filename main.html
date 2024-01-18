@@ -51,6 +51,7 @@
         function save(){
             let text = document.getElementById('text-val').value;
             text = text+"\n";
+            text.close();
             window.location.reload(true);
         }
         function download(filename, text) {
