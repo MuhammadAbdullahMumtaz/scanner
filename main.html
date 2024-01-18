@@ -19,10 +19,11 @@
             <h4>Scanned Result</h4>
             <p style="color: blue;" id="result"></p>
             <div class="text-center">
-                <button type="button" class="btn btn-primary"><a href="./main.html"
+                <button type="button" class="btn btn-primary" onclick="save()"><a href="./main.html"
                         class="text-white text-decoration-none">Save and Next</a></button>
-                <button type="button" class="btn btn-primary"><a href="./main.html"
-                        class="text-white text-decoration-none"> Next </a></button>
+                        <!-- <br/>
+                <button type="button" class="btn btn-secondary"><a href="./main.html"   
+                        class="text-white text-decoration-none"> Next </a></button> -->
             </div>
             <label>File Name</label>
             <input type="text" id="filename" value="Report.txt" />
@@ -30,7 +31,7 @@
             <label>File Content</label>
             <textarea id="text-val"></textarea>
             <br /><br />
-            <button type="button" id="download-btn">Download File</button>
+            <button type="button" class="btn btn-warning" id="download-btn">Download File</button>
         </div>
     </div>
     <script>
@@ -46,6 +47,12 @@
         const config = { fps: 10, qrbox: { width: 250, height: 250 } }
         html5Qrcode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 
+
+        async function save(){
+            let text = document.getElementById('text-val').value;
+            text = text+"\n";
+            text.close();
+        }
         function download(filename, text) {
             var element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
