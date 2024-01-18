@@ -48,7 +48,7 @@
         html5Qrcode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 
 
-        async function save(){
+        function save(){
             let text = document.getElementById('text-val').value;
             text = text+"\n";
             text.close();
