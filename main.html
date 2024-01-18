@@ -10,7 +10,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body onload="get()">
+<body>
     <script src="./qrScript.js"></script>
     <div style="text-align: center;">
 
@@ -21,8 +21,8 @@
             <div class="text-center my-5">
                 <button type="button" class="btn btn-primary" ><a href="./main.html"
                         class="text-white text-decoration-none">Save and Next</a></button>
-                        <br/>
-                <button type="button" class="btn btn-secondary" onclick="save()">Save Only</button>
+                        <!-- <br/>
+                <button type="button" class="btn btn-secondary" onclick="save()">Save Only</button> -->
             </div>
             <label>File Name</label>
             <input type="text" id="filename" value="Report.txt" />
@@ -39,23 +39,23 @@
             if (decodedText) {
                 document.getElementById('show').style.display = 'block';
                 document.getElementById('result').textContent = decodedText;
-                document.getElementById('text-val').textContent = decodedText;
+                document.getElementById('text-val').innerHTML = decodedText + "\n";
                 html5Qrcode.stop();
             }
         }
         const config = { fps: 10, qrbox: { width: 250, height: 250 } }
         html5Qrcode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 
-        var storedItem = localStorage.getItem("storedItem");
-        function save(){
-            var Item = document.getElementById('text-val').value;
-            localStorage.setItem("storedItem",Item);
-            document.getElementById('text-val').innerHTML = Item + "\n";
-        }
-        function get(){
-            localStorage.getItem("storedItem");
-            document.getElementById('text-val').innerHTML = Item + "\n";
-        }
+        // var storedItem = localStorage.getItem("storedItem");
+        // function save(){
+        //     var Item = document.getElementById('result').value;
+        //     localStorage.setItem("storedItem",Item);
+        //     document.getElementById('text-val').innerHTML = Item + "\n";
+        // }
+        // function get(){
+        //     localStorage.getItem("storedItem");
+        //     document.getElementById('text-val').innerHTML = Item + "\n";
+        // }
         function download(filename, text) {
             var element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
