@@ -1,5 +1,6 @@
+import "./qrScript.js"
 const html5Qrcode = new Html5Qrcode('reader');
-const qrCodeSuccessCallback = (decodedText, decodedResult)=>{
+const qrCodeSuccessCallback = (decodedText)=>{
     if(decodedText){
         document.getElementById('show').style.display = 'block';
         document.getElementById('result').textContent = decodedText;
