@@ -41,7 +41,9 @@
             if (decodedText) {
                 document.getElementById('show').style.display = 'block';
                 document.getElementById('result').textContent = decodedText;
-                document.getElementById('text-val').value.append(decodedText);
+                document.getElementById('text-val').value = decodedText;
+                let abd =document.getElementById('text-val').value;
+                savedcontent.append(abd);
                 html5Qrcode.stop();
             }
         }
