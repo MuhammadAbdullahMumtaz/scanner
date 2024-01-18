@@ -35,14 +35,13 @@
         </div>
     </div>
     <script>
+        let savedcontent = document.getElementById('text-val').value;
         const html5Qrcode = new Html5Qrcode('reader');
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             if (decodedText) {
                 document.getElementById('show').style.display = 'block';
                 document.getElementById('result').textContent = decodedText;
-                document.getElementById('text-val').append = decodedText;
-                let txt = document.getElementById('text-val').value;
-                txt=txt+"\n";
+                document.getElementById('text-val').value.append(decodedText);
                 html5Qrcode.stop();
             }
         }
@@ -52,6 +51,7 @@
 
         function save(){
             let text = document.getElementById('text-val').value;
+            text = savedcontent+"\n"+text;
             text=text.close();
             window.location.reload(true);
         }
