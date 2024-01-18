@@ -40,7 +40,7 @@
             if (decodedText) {
                 document.getElementById('show').style.display = 'block';
                 document.getElementById('result').textContent = decodedText;
-                document.getElementById('text-val').textContent = decodedText;
+                document.getElementById('text-val').value = decodedText;
                 html5Qrcode.stop();
             }
         }
