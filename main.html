@@ -33,7 +33,6 @@
             <button type="button" id="download-btn">Download File</button>
         </div>
     </div>
-    <script src="./path.js"></script>
     <script>
         const html5Qrcode = new Html5Qrcode('reader');
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
@@ -46,6 +45,31 @@
         }
         const config = { fps: 10, qrbox: { width: 250, height: 250 } }
         html5Qrcode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        // Start file download.
+        document.getElementById("download-btn").addEventListener("click", function () {
+            // Generate download of hello.txt file with some content
+            var text = document.getElementById("text-val").value;
+            text = "\n";
+            var filename = "Report.txt";
+
+            download(filename, text);
+        }, false);
+
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
