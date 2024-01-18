@@ -1,11 +1,23 @@
-import "./qrScript.js";
-const html5Qrcode = new Html5Qrcode('reader');
-const qrCodeSuccessCallback = (decodedText, decodedResult)=>{
-    if(decodedText){
-        document.getElementById('show').style.display = 'block';
-        document.getElementById('result').textContent = decodedText;
-        html5Qrcode.stop();
-    }
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
 }
-const config = {fps:10, qrbox:{width:250, height:250}}
-html5Qrcode.start({facingMode:"environment"}, config,qrCodeSuccessCallback );
+
+// Start file download.
+document.getElementById("download-btn").addEventListener("click", function(){
+    // Generate download of hello.txt file with some content
+    var text = document.getElementById("text-val").value;
+    text = "\n";
+    var filename = "Report.txt";
+    
+    download(filename, text);
+}, false);
+
