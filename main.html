@@ -19,7 +19,7 @@
             <h4>Scanned Result</h4>
             <p style="color: blue;" id="result"></p>
             <div class="text-center">
-                <button type="button" class="btn btn-primary" onclick="save()"><a href="./main.html"
+                <button type="button" class="btn btn-primary"><a href="./main.html"
                         class="text-white text-decoration-none">Save and Next</a></button>
                         <!-- <br/>
                 <button type="button" class="btn btn-secondary"><a href="./main.html"   
@@ -35,28 +35,18 @@
         </div>
     </div>
     <script>
-        let savedcontent = document.getElementById('text-val').value;
         const html5Qrcode = new Html5Qrcode('reader');
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             if (decodedText) {
                 document.getElementById('show').style.display = 'block';
                 document.getElementById('result').textContent = decodedText;
-                document.getElementById('text-val').value = decodedText;
-                let abd =document.getElementById('text-val').value;
-                savedcontent.append(abd);
+                document.getElementById('text-val').textContent = decodedText;
                 html5Qrcode.stop();
             }
         }
         const config = { fps: 10, qrbox: { width: 250, height: 250 } }
         html5Qrcode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 
-
-        function save(){
-            let text = document.getElementById('text-val').value;
-            text = savedcontent+"\n"+text;
-            text=text.close();
-            window.location.reload(true);
-        }
         function download(filename, text) {
             var element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
