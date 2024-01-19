@@ -40,7 +40,6 @@
                 document.getElementById('show').style.display = 'block';
                 document.getElementById('result').textContent = decodedText;
                 document.getElementById('text-val').innerHTML = decodedText + "**";
-                copytext = document.getElementById('text-val').value;
                 html5Qrcode.stop();
             }
         }
@@ -49,6 +48,7 @@
 
         // var storedItem = localStorage.getItem("storedItem");
         function save(){
+            copytext = document.getElementById('text-val').value;
             document.getElementById('show').style.display = 'none';
             const html5Qrcode = new Html5Qrcode('reader');
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
