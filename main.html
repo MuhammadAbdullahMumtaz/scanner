@@ -47,8 +47,18 @@
 
         // var storedItem = localStorage.getItem("storedItem");
         function save(){
-            const html5Qrcode = new Html5Qrcode('reader');
             document.getElementById('show').style.display = 'none';
+            const html5Qrcode = new Html5Qrcode('reader');
+            const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+            if (decodedText) {
+                document.getElementById('show').style.display = 'block';
+                document.getElementById('result').textContent = decodedText;
+                document.getElementById('text-val').innerHTML = decodedText + "\n";
+                html5Qrcode.stop();
+            }
+        }
+        const config = { fps: 10, qrbox: { width: 250, height: 250 } }
+        html5Qrcode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
         }
         // function get(){
         //     localStorage.getItem("storedItem");
