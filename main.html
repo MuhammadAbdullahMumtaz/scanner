@@ -19,8 +19,7 @@
             <h4>Scanned Result</h4>
             <p style="color: blue;" id="result"></p>
             <div class="text-center my-5">
-                <button type="button" class="btn btn-primary" ><a href="./main.html"
-                        class="text-white text-decoration-none">Save and Next</a></button>
+                <button type="button" class="btn btn-primary" >Save and Next</button>
                         <!-- <br/>
                 <button type="button" class="btn btn-secondary" onclick="save()">Save Only</button> -->
             </div>
@@ -47,11 +46,10 @@
         html5Qrcode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
 
         // var storedItem = localStorage.getItem("storedItem");
-        // function save(){
-        //     var Item = document.getElementById('result').value;
-        //     localStorage.setItem("storedItem",Item);
-        //     document.getElementById('text-val').innerHTML = Item + "\n";
-        // }
+        function save(){
+            const html5Qrcode = new Html5Qrcode('reader');
+            document.getElementById('show').style.display = 'none';
+        }
         // function get(){
         //     localStorage.getItem("storedItem");
         //     document.getElementById('text-val').innerHTML = Item + "\n";
